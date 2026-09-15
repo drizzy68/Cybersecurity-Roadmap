@@ -1,22 +1,26 @@
-# YYYY-MM-DD — <topic>
+# 2026-09-15 — OverTheWire Bandit + subnetting
 
-**Session type:** Learn / Lab / Review / Portfolio
-**Time spent:** __
+**Session type:** Lab
+**Time spent:** ___
 
 ## What I did
-- 
+- Started OverTheWire Bandit (Linux/terminal fundamentals).
+- Ran a subnetting drill and checked it with scripts/subnet_calc.py.
 
 ## What I performed (hands-on, not watched)
-- 
+- Cleared Bandit levels ___ to ___.
+- Key commands used: ___ (e.g. ls, cat, ssh, find, file)
+- Subnet worked by hand: ___/___  →  network ___, broadcast ___, usable range ___
 
 ## Evidence produced
-- (command output, screenshot path, script, cleared level, diagram)
+- Bandit progress: reached level ___
+- subnet_calc.py output pasted/screenshot: ___
 
 ## What tripped me up + how I solved it
-- 
+- ___
 
 ## Can I now explain / perform / troubleshoot it?
 - Explain: y/n   Perform: y/n   Troubleshoot: y/n
 
 ## Next highest-value thing
-- 
+- ___
