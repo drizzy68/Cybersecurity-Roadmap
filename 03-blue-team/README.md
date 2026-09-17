@@ -1,149 +1,103 @@
 # 03 — Blue Team / SOC
 
-Blue Team / SOC is the primary employability direction of this roadmap. The objective is to become capable of receiving security telemetry, determining whether activity is benign or suspicious, investigating scope and cause, and communicating the result clearly.
+This section contains the canonical defensive-security knowledge used to investigate activity, triage alerts, detect threats and communicate incidents.
 
-## 1. SOC mental model
+The SOC mindset is **evidence first**: establish what happened, when it happened, which systems/accounts were involved, what evidence supports the conclusion, and what action is justified.
 
-A SOC turns telemetry into decisions:
+## Investigation lifecycle
 
-**Telemetry → Detection → Alert → Triage → Investigation → Scope → Response/Escalation → Recovery → Lessons learned**
+```text
+Alert / Signal
+      ↓
+Validate
+      ↓
+Scope
+      ↓
+Collect Evidence
+      ↓
+Correlate
+      ↓
+Form Hypotheses
+      ↓
+Test Hypotheses
+      ↓
+Contain / Escalate
+      ↓
+Document
+      ↓
+Improve Detection
+```
 
-A good analyst does not blindly trust an alert. The analyst validates the signal against evidence and context.
+## Canonical topics
 
-## 2. Windows security foundations
+### 🧾 Logs
 
-Study:
-- Windows processes and services
-- accounts and groups
-- authentication concepts
-- Event Viewer
-- PowerShell
-- scheduled tasks
-- network connections
-- endpoint security concepts
-- Active Directory basics
+- Windows Event Logs
+- Linux logs and journald
+- Authentication events
+- Process and service activity
+- Network/security telemetry
+- Log fields, timestamps and context
+- Normal vs suspicious activity
 
-### Investigation questions
-- Which account acted?
-- Which host was involved?
-- What process or service generated the activity?
-- When did it occur?
-- What happened immediately before and after?
-- Is the behavior expected for this user/host?
-- What other systems or events are associated with it?
+→ [`Logs`](logs/README.md)
 
-## 3. Linux telemetry
+### 📊 SIEM
 
-Learn:
-- authentication logs
-- system/service logs
-- process activity
-- SSH activity
-- scheduled tasks
-- file permissions
-- network connections
+- Events vs alerts
+- Parsing and normalization
+- Search/query thinking
+- Correlation
+- Detection rules
+- False positives and false negatives
+- Investigation timelines
 
-Practice identifying normal administration versus anomalous behavior in a controlled lab.
+→ [`SIEM`](siem/README.md)
 
-## 4. SIEM fundamentals
+### 🚨 Incident Response
 
-Understand the pipeline:
+- Preparation
+- Detection and analysis
+- Triage
+- Scoping
+- Containment
+- Eradication and recovery
+- Evidence preservation
+- Lessons learned
 
-**Source → Collection → Parsing → Normalization → Indexing → Query → Detection → Alert → Investigation**
+→ [`Incident Response`](incident-response/README.md)
 
-Learn the difference between:
-- raw event
-- normalized field
-- search/query
-- detection rule
-- alert
-- incident
+### 🧠 Detection Engineering
 
-Practice filtering by time, host, user, source IP, destination IP, process and event type.
+- Detection objectives
+- Observable behavior
+- Authentication detections
+- Process and PowerShell detections
+- Network indicators
+- Alert quality
+- Validation and tuning
 
-## 5. Alert triage
+→ [`Detection`](detection/README.md)
 
-For every alert:
+---
 
-1. Read the detection logic.
-2. Confirm the timestamp and affected asset.
-3. Identify the user/process/network context.
-4. Determine whether the activity is plausible.
-5. Search surrounding events.
-6. Correlate related hosts/accounts/IPs.
-7. Decide whether to close, escalate or investigate further.
-8. Document the reasoning.
+## Core SOC questions
 
-The important evidence is not just the final disposition; it is why the disposition was reached.
+For every alert, ask:
 
-## 6. Detection engineering fundamentals
+1. **What exactly triggered the signal?**
+2. **Is the event real, expected or ambiguous?**
+3. **Which user, host, process, IP or application is involved?**
+4. **What happened immediately before and after?**
+5. **Is there evidence of persistence, privilege change or lateral movement?**
+6. **What additional telemetry can confirm or reject the hypothesis?**
+7. **What action is justified by the evidence?**
+8. **What should be documented for another analyst?**
 
-Learn to distinguish:
-- indicator vs behavior
-- signature vs analytic detection
-- high-fidelity vs noisy rules
-- detection coverage vs alert volume
-- false positive vs true positive
+## SOC competency gate
 
-A useful detection should specify:
-- data source
-- event condition
-- relevant fields
-- threshold/time window where applicable
-- expected false positives
-- investigation steps
-- response/escalation guidance
+A topic is not complete because I can identify an Event ID or write a query. I should be able to:
 
-## 7. Incident response
+**Observe → Interpret → Correlate → Investigate → Explain → Document**
 
-Use a repeatable lifecycle:
-
-**Preparation → Identification → Containment → Eradication → Recovery → Lessons learned**
-
-For training cases, document what evidence justified each transition. Preserve evidence before changing the environment when practical.
-
-## 8. Timeline analysis
-
-Build timelines from multiple sources rather than relying on a single log.
-
-Useful fields:
-- timestamp
-- host
-- user
-- process
-- source/destination
-- event type
-- action
-- evidence source
-- confidence
-
-Normalize timestamps and timezone assumptions before drawing conclusions.
-
-## 9. Threat intelligence
-
-Learn the distinction between:
-- IOC: observable artifact such as a hash, domain or IP
-- TTP: behavior or technique used by an adversary
-- context: information that explains why an indicator matters
-
-Avoid treating an IOC alone as proof of compromise. Correlate it with endpoint, network and authentication evidence.
-
-## 10. Portfolio labs
-
-Build progressively:
-
-### Lab A — Windows authentication investigation
-Generate normal and failed authentication activity in an isolated lab, identify relevant events, construct a timeline and explain the conclusion.
-
-### Lab B — Suspicious PowerShell investigation
-Generate safe test activity, inspect PowerShell and process telemetry, identify the parent process and user context, and document what evidence would distinguish benign administration from suspicious execution.
-
-### Lab C — Network alert triage
-Investigate a simulated connection alert using packet capture and host context.
-
-### Lab D — Mini SOC case
-Combine authentication, endpoint and network events into one incident narrative.
-
-## Definition of done
-
-A SOC topic is complete when I can **identify the relevant telemetry, form a hypothesis, query evidence, correlate events, explain uncertainty, reach a defensible disposition, and document the investigation**.
+The detailed technical explanation belongs in the canonical topic pages. Project pages should contain the actual investigation evidence, not duplicate the textbook material.
