@@ -1,152 +1,124 @@
 # 02 — Offensive Security
 
-This track develops the ability to assess authorized systems methodically. The goal is not to memorize exploits; it is to understand attack surfaces, validate hypotheses, control risk, collect evidence and communicate remediation.
+This section contains the canonical offensive-security methodology and technical knowledge used for **authorized labs, CTFs and explicitly authorized assessments**.
 
-## 1. Authorization and scope
+It is not a list of tools. The goal is to understand the attack surface, form hypotheses, validate them safely, obtain evidence, and communicate risk accurately.
 
-Before touching a target, define:
-- authorized assets and IP ranges
-- excluded systems and actions
-- testing window
-- allowed techniques
-- data-handling requirements
-- stop conditions
-- evidence-storage rules
+## Workflow
 
-A technically successful test outside scope is still a failed professional process.
+```text
+Authorization & Scope
+        ↓
+Reconnaissance
+        ↓
+Enumeration
+        ↓
+Attack-Surface Analysis
+        ↓
+Vulnerability Validation
+        ↓
+Controlled Exploitation
+        ↓
+Privilege Escalation
+        ↓
+Evidence & Impact Analysis
+        ↓
+Remediation
+        ↓
+Report
+```
 
-## 2. Reconnaissance
+## Canonical topics
 
-### Passive reconnaissance
-Learn what can be established without directly interacting with the target, such as public DNS information, documented technologies and publicly available organizational information.
+### 🔎 Reconnaissance
 
-### Active reconnaissance
-Within authorization, identify reachable hosts and observable services. Record timestamps and commands so results are reproducible.
+- Scope definition
+- Passive vs active reconnaissance
+- Asset discovery
+- Technology identification
+- Attack-surface mapping
 
-### Questions
-- What assets exist?
-- Which addresses belong to the authorized scope?
-- What technologies appear exposed?
-- What information is uncertain and needs validation?
+→ [`Reconnaissance`](reconnaissance/README.md)
 
-## 3. Enumeration
+### 🧭 Enumeration
 
-Enumeration converts discovery into detail.
+- Host discovery
+- Port and service discovery
+- Version identification
+- Service-specific enumeration
+- Web enumeration
+- Validation of scanner output
 
-### Network/service enumeration
-For each host, establish:
-- open/filtered/closed ports
-- protocol
-- service
-- version where safely observable
-- TLS behavior where relevant
-- likely function
-- confidence level
+→ [`Enumeration`](enumeration/README.md)
 
-Never equate an open port with a vulnerability. A port is an observation; the service and configuration determine the security significance.
+### 🌐 Web Security
 
-### Web enumeration
-Map:
-- domains and virtual hosts where authorized
-- HTTP methods
-- application paths
-- parameters
-- authentication boundaries
-- cookies/session behavior
-- technologies
-- error handling
-- access-control boundaries
-
-## 4. Vulnerability validation
-
-Move from scanner output to evidence:
-
-**Observation → Hypothesis → Safe test → Result → Impact → Root cause → Remediation**
-
-Avoid destructive proof when a low-impact demonstration is sufficient.
-
-## 5. Web application security
-
-Core learning areas:
-- authentication vs authorization
-- IDOR/BOLA
+- HTTP request/response model
+- Authentication and sessions
+- Authorization and access control
+- Input validation
 - XSS
-- SQL injection concepts
-- command injection concepts
-- SSRF concepts
-- file upload risks
-- path traversal
+- Injection
+- SSRF
+- Path traversal
+- File upload
 - CSRF
-- session management
-- security misconfiguration
-- access-control failures
+- Security headers and configuration
 
-For each finding, document the affected function, prerequisite, safe reproduction, evidence, impact and recommended control.
+→ [`Web Security`](web-security/README.md)
 
-## 6. Initial access
+### ⬆️ Privilege Escalation
 
-The objective is to understand how a validated weakness can cross a security boundary in a controlled lab. Focus on root cause and defensive implications rather than exploit collection.
+- Linux privilege boundaries
+- Windows privilege boundaries
+- Misconfigurations
+- Services and scheduled execution
+- Credentials and secrets in authorized labs
+- Local enumeration methodology
 
-Record:
-- entry condition
-- technique
-- privileges obtained
-- affected component
-- evidence
-- cleanup
+→ [`Privilege Escalation`](privilege-escalation/README.md)
 
-## 7. Privilege escalation
+### 📋 Penetration-Testing Methodology
 
-Study the difference between a low-privileged context and a higher-privileged context.
+- Rules of engagement
+- Scope and exclusions
+- Evidence handling
+- Finding construction
+- Risk reasoning
+- Remediation
+- Reporting
 
-### Linux
-- permissions and ownership
-- SUID/SGID
-- sudo configuration
-- scheduled tasks
-- services
-- writable paths
-- credentials/configuration exposure
+→ [`Pentesting Methodology`](pentesting-methodology/README.md)
 
-### Windows
-- service permissions
-- scheduled tasks
-- weak file/registry permissions
-- token/privilege concepts
-- credential exposure
-- misconfigured software/services
+---
 
-Use isolated training environments and explain why the escalation is possible.
+## eJPT readiness model
 
-## 8. Post-exploitation concepts
+The offensive track should eventually demonstrate competence across:
 
-Understand what an attacker could do after access:
-- identify current identity and privileges
-- inspect local configuration
-- identify reachable resources
-- determine persistence opportunities conceptually
-- assess lateral-movement paths conceptually
-- collect only necessary evidence
-- clean up the lab
+1. Network reconnaissance and enumeration
+2. Service and application analysis
+3. Web application testing
+4. Vulnerability validation
+5. Initial access in controlled environments
+6. Linux and Windows privilege escalation
+7. Pivoting concepts and network segmentation
+8. Evidence collection
+9. Clear technical reporting
+10. Repeatable troubleshooting
 
-## 9. Reporting
+### Important distinction
 
-A professional finding should contain:
+A successful exploit is **not** the same thing as a successful security assessment.
 
-**Title → Severity/risk rationale → Affected asset → Description → Root cause → Preconditions → Reproduction → Evidence → Impact → Remediation → References**
+A professional assessment must also answer:
 
-Separate facts from assumptions. State limitations explicitly.
+- Was the action authorized?
+- What asset and scope were affected?
+- What evidence proves the issue?
+- What was the root cause?
+- What could an attacker realistically achieve?
+- How should the issue be fixed?
+- Can the result be reproduced safely?
 
-## 10. eJPT readiness gate
-
-Before treating eJPT preparation as complete, demonstrate repeated independent performance in:
-- host/network auditing
-- enumeration
-- network/service analysis
-- basic exploitation in labs
-- web application testing
-- privilege escalation fundamentals
-- evidence collection
-- structured reporting
-
-The target is not simply finishing a course. The target is being able to reason through an unfamiliar authorized lab.
+Other sections should link to the canonical foundation material instead of re-explaining networking, Linux or Windows internals.
