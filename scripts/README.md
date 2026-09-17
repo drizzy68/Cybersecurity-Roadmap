@@ -1,6 +1,6 @@
 # 🐍 Security Scripts
 
-This directory contains executable automation used by the roadmap.
+This directory contains the executable automation used by the roadmap.
 
 ## Current script
 
@@ -18,6 +18,35 @@ Scripts should be:
 - explicit about inputs and outputs
 - tested against representative cases
 
-The design and learning objectives for scripts live in [`06-scripts`](../06-scripts/README.md). The underlying networking concepts live in [`01-foundations/networking`](../01-foundations/networking/README.md).
+## Planned automation
 
-This separation keeps **code**, **automation design**, and **technical theory** from becoming duplicated copies of the same material.
+- log parser
+- IOC extractor
+- hash verification utility
+- HTTP header analyzer
+- authorized asset inventory helper
+- report generator
+- detection-rule test harness
+
+## Architecture
+
+- **Technical theory:** `01-foundations/`
+- **Hands-on labs and CTFs:** `04-ctf-training/` and `05-projects/`
+- **Executable automation:** this directory
+
+The same concept should not be copied into multiple sections. Scripts should apply the underlying theory rather than reproduce it.
+
+## Safety rule
+
+Before running automation against a real environment, confirm:
+
+```text
+Authorization
+→ Scope
+→ Input validation
+→ Rate/impact controls
+→ Logging
+→ Safe failure behavior
+```
+
+A technically correct script that is operationally unsafe is not a successful security tool.
