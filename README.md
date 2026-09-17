@@ -1,210 +1,216 @@
 # 🛡️ Cybersecurity Career Roadmap
 
-> **Evidence-backed cybersecurity learning journey toward eJPT readiness and junior SOC / security analyst capability.**
+> **An evidence-driven cybersecurity learning and portfolio system.**
 
-This repository is the public evidence layer of my cybersecurity career roadmap. It documents what I learn, what I build, how I troubleshoot, and how I apply security concepts in practical labs.
+This repository is the public technical layer of my cybersecurity journey. It is designed to show **what I understand, what I can do, how I troubleshoot, and what evidence I can produce**.
 
 ## 🎯 Career Direction
 
-**Primary employability track:** Blue Team / SOC / Security Operations  
-**Secondary track:** Offensive Security / Ethical Hacking  
-**Long-term tracks:** Security Engineering, DFIR, Threat Intelligence, Cloud Security  
+| Track | Role in the roadmap |
+|---|---|
+| **Blue Team / SOC** | Primary employability direction |
+| **Offensive Security** | Secondary technical direction and eJPT preparation |
+| **Security Engineering** | Long-term engineering path |
+| **DFIR / Threat Intelligence** | Long-term investigation paths |
+| **Cloud Security** | Future specialization |
+
 **Current certification target:** eJPT
 
-The strategy is simple:
+The operating principle is:
 
-**Skills → Labs → Evidence → Targeted Certification → Portfolio → Employability**
+**Fundamentals → Hands-on practice → Investigation/building → Evidence → Certification → Employability → Specialization**
 
-Certificates validate capability; they do not replace it.
+---
 
-## 🧭 How I Learn
+## 🧭 How This Repository Is Organized
 
-For every major topic I use four competency questions:
-
-1. **Can I explain it?**
-2. **Can I perform it?**
-3. **Can I troubleshoot it?**
-4. **Can I document and apply it elsewhere?**
-
-My practical learning loop is:
-
-**Learn → Lab → Investigate/Build → Document → Prove → Specialize**
-
-I prioritize hands-on work, use walkthroughs only when needed, and turn important learning into reusable evidence.
-
-## 🗂️ Repository Structure
+The repository deliberately separates **knowledge, practice, evidence, and personal notes** so the same explanation is not copied into several places.
 
 ```text
 Cybersecurity-Roadmap/
-├── 01-foundations/
+│
+├── 01-foundations/             # Canonical technical foundations
 │   ├── networking/
 │   ├── linux/
-│   └── windows/
-├── 02-offensive-security/
+│   ├── windows/
+│   └── python/
+│
+├── 02-offensive-security/      # Canonical offensive-security knowledge
 │   ├── reconnaissance/
 │   ├── enumeration/
 │   ├── web-security/
 │   ├── privilege-escalation/
 │   └── pentesting-methodology/
-├── 03-blue-team/
+│
+├── 03-blue-team/               # Canonical SOC / defensive knowledge
 │   ├── logs/
 │   ├── siem/
 │   ├── incident-response/
 │   └── detection/
-├── 04-ctf-training/
-│   └── overthewire/
-│       └── bandit/
-├── 05-projects/
-├── 06-scripts/
-├── 07-dfir/
-├── labs/
-├── notes/
-└── scripts/
+│
+├── 04-ctf-training/            # Challenge-specific learning
+│   └── overthewire/bandit/
+│
+├── 05-projects/                # Actual investigations, labs and portfolio evidence
+├── 06-scripts/                 # Automation index; executable scripts remain under scripts/
+├── 07-dfir/                    # Forensic and investigation specialization
+├── labs/                       # Reserved for future standalone lab material
+├── notes/                      # Dated learning journal; not canonical reference material
+└── scripts/                    # Working security scripts
 ```
 
-The existing `labs/`, `notes/`, and `scripts/` areas are retained while the repository grows into a more structured public portfolio.
+### The single-source-of-truth rule
 
-## 🥷 Current CTF Progress
+Each important concept has one **canonical home**.
 
-### OverTheWire Bandit
+- Networking concepts → `01-foundations/networking/`
+- Linux administration → `01-foundations/linux/`
+- Windows security administration → `01-foundations/windows/`
+- Python security automation → `01-foundations/python/`
+- Web vulnerabilities → `02-offensive-security/web-security/`
+- SOC/log concepts → `03-blue-team/`
+- Challenge reasoning → `04-ctf-training/`
+- Real project evidence → `05-projects/`
+- Forensic methodology → `07-dfir/`
 
-**Current milestone: Level 20 reached**  
-**Next:** Level 20 → 21
+Other pages should **apply or reference** a concept, not reproduce its textbook explanation.
 
-Bandit is being used to strengthen Linux and security problem-solving rather than simply collect challenge completions.
+---
 
-Skills practiced include:
+## 🧠 Learning Standard
 
-- Linux filesystem navigation
-- Shell quoting and argument parsing
-- `find` and metadata-based discovery
-- `grep`, `sort`, `uniq`, `strings`, `tr`
-- Pipelines and stdout/stderr handling
-- Encoding and decoding
-- Compression and binary-file inspection
-- SSH and SSH keys
-- TCP service interaction
-- TLS with `openssl`
-- Permissions and setuid concepts
-- Troubleshooting command failures
+For every major skill I work through:
 
-See the [Bandit learning track](04-ctf-training/overthewire/bandit/README.md) and [Levels 0–20 write-up](04-ctf-training/overthewire/bandit/levels-0-20.md).
+1. **Definition** — What is it?
+2. **Mechanism** — How does it actually work?
+3. **Purpose** — Why does it exist?
+4. **Security relevance** — How can it fail or be abused?
+5. **Hands-on use** — Can I perform it in an authorized lab?
+6. **Failure analysis** — What happens when it does not work?
+7. **Troubleshooting** — Can I isolate the cause?
+8. **Evidence** — Can I document what I did?
+9. **Transfer** — Can I apply the concept in a new environment?
 
-## 🔐 Offensive Security
+The target is not tool memorization. The target is **technical reasoning**.
 
-The offensive track follows an authorized penetration-testing workflow:
+---
 
-**Scope → Recon → Enumeration → Validation → Exploitation → Privilege Escalation → Evidence → Remediation → Report**
-
-Current areas include network enumeration, web application security, vulnerability analysis, privilege boundaries, and penetration-testing methodology.
-
-All offensive testing documented here is intended for authorized labs, training environments, or explicitly authorized assessments.
-
-## 🛡️ Blue Team / SOC
-
-The blue-team track is focused on building employable security-operations fundamentals:
-
-**Alert → Validate → Scope → Investigate → Correlate → Contain/Escalate → Document → Improve**
-
-Upcoming practical areas include Windows Event Viewer, authentication events, PowerShell, SIEM fundamentals, log correlation, detection engineering, and incident investigation.
-
-## 🧪 Portfolio Evidence
-
-Projects are documented around evidence rather than completion badges. A strong artifact should show:
-
-- Objective and scope
-- Environment and assumptions
-- Methodology
-- Tools/commands or implementation
-- Evidence and observations
-- Findings or outcome
-- Troubleshooting
-- Security relevance
-- Remediation or lessons learned
-
-Current project themes include network enumeration, web-security analysis, penetration testing, virtualization, and future SOC investigations/security automation.
-
-## 📚 Existing Learning Notes
-
-The `notes/` directory contains dated learning records. For example, the September 15 Bandit session documents Levels 0–10 and the reasoning behind techniques such as `find`, `grep`, pipelines, shell literal handling, and stdout/stderr redirection. fileciteturn40file0
-
-## 🚀 Roadmap
+## 🗺️ Learning Path
 
 ### Phase 1 — Foundations
 
-- Networking
-- Linux
-- Windows
-- Python
+- IPv4, subnetting, routing and switching
+- TCP/IP, ports, sockets and common protocols
+- Linux shell, permissions, processes, services and networking
+- Windows administration, Event Logs, PowerShell and authentication
+- Python fundamentals and security automation
+
+→ Start with [`01-foundations`](01-foundations/README.md)
 
 ### Phase 2 — Practitioner Skills
 
 - Reconnaissance
 - Enumeration
-- Web security
+- Web application security
 - Privilege escalation
-- Security troubleshooting
+- Penetration-testing methodology
 
-### Phase 3 — eJPT Readiness
+→ Continue with [`02-offensive-security`](02-offensive-security/README.md)
 
-- Host/network auditing
-- Host/network penetration testing
-- Web application testing
-- Structured reporting
-- Repeated authorized hands-on labs
+### Phase 3 — Defensive Capability
 
-### Phase 4 — SOC Capability
-
-- Windows/Linux logs
-- SIEM
+- Windows/Linux logging
+- SIEM concepts
 - Alert triage
-- Authentication analysis
+- Authentication investigation
 - Incident response
-- Detection fundamentals
+- Detection engineering
 
-### Phase 5 — Portfolio & Employability
+→ Continue with [`03-blue-team`](03-blue-team/README.md)
 
-- 3–5 strong technical artifacts
-- Sanitized internship evidence
+### Phase 4 — CTF & Problem Solving
+
+Current OverTheWire Bandit milestone: **Level 20 reached; next 20 → 21**.
+
+→ [`04-ctf-training`](04-ctf-training/README.md)
+
+### Phase 5 — Evidence & Portfolio
+
+Turn practical work into sanitized, reproducible evidence:
+
+**Objective → Environment → Method → Evidence → Finding/Outcome → Troubleshooting → Security lesson → Remediation**
+
+→ [`05-projects`](05-projects/README.md)
+
+### Phase 6 — DFIR & Specialization
+
+- Endpoint artifacts
+- Event analysis
+- Timeline construction
+- Evidence integrity
+- Incident investigation
+
+→ [`07-dfir`](07-dfir/README.md)
+
+---
+
+## 🥷 Current CTF Progress
+
+Bandit is being used to develop Linux fluency, command-line reasoning, protocol awareness, and problem-solving discipline.
+
+The public write-up intentionally documents **techniques and reasoning, not passwords or secrets**.
+
+→ [`Bandit tracker`](04-ctf-training/overthewire/bandit/README.md)
+
+→ [`Levels 0–20`](04-ctf-training/overthewire/bandit/levels-0-20.md)
+
+---
+
+## 🧪 Current Portfolio Evidence
+
+The repository is building toward several evidence categories:
+
+- Authorized network enumeration
+- Penetration-testing methodology and reporting
+- Web-security analysis
+- VMware/virtualization documentation
 - CTF write-ups
-- Security scripts
-- Technical interview stories
-- Consistent GitHub documentation
+- Python security automation
+- Future SOC investigations
+- Future DFIR investigations
 
-### Phase 6 — Specialization
+A project is valuable when it demonstrates **reasoning and evidence**, not merely that a tool was executed.
 
-Depending on experience and career direction:
+---
 
-- Security Engineering
-- DFIR
-- Threat Intelligence
-- Cloud Security
-- Advanced Offensive Security
+## 🔐 Public-Safety Rules
 
-## 📈 Progress Philosophy
+This repository is public. Never publish:
 
-I treat roadmap phases as **competency gates, not calendar deadlines**.
+- Passwords or hashes that provide unauthorized access
+- API keys, tokens or private credentials
+- Private customer/client information
+- Confidential internship information
+- Sensitive internal hostnames, IP ranges or topology
+- Unapproved screenshots or production data
+- Exploit instructions tied to real unauthorized targets
 
-I would rather be able to independently explain, execute, troubleshoot, and document a smaller number of skills than superficially recognize a large number of tools.
+All offensive testing is limited to systems I own, training environments, or explicitly authorized assessments.
 
-## 🔒 Security & Privacy
+---
 
-This is a public learning repository. Sensitive information must never be committed, including:
+## 📈 Competency Gate
 
-- Passwords
-- API keys
-- Tokens
-- Private credentials
-- Confidential client/internship information
-- Sensitive production topology
-- Unapproved internal host information
+A topic is not considered complete because I read about it.
 
-Public write-ups should demonstrate methodology without exposing secrets or creating unnecessary operational risk.
+**Explain → Perform → Troubleshoot → Apply → Document → Teach**
+
+The roadmap therefore measures **capability**, not time spent or the number of certificates collected.
+
+---
 
 ## 📌 Current Mission
 
-> **Strengthen networking/Linux fundamentals, continue Bandit, build eJPT-style practical capability, start Windows security and SOC foundations, and turn real technical work into high-quality public evidence.**
-
----
+> **Deepen networking/Linux/Windows fundamentals, continue Bandit, build eJPT-level practical capability, develop SOC investigation skills, and continuously convert real work into high-quality evidence.**
 
 **Learning principle:** Build it. Break it safely. Investigate it. Document it. Explain it.
