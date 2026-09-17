@@ -1,109 +1,104 @@
-# 07 — Digital Forensics & Incident Response
+# 07 — DFIR
 
-DFIR is a long-term specialization. It combines operating-system knowledge, networking, evidence handling, timeline analysis and incident-response reasoning.
+Digital Forensics and Incident Response (DFIR) is a long-term specialization built on the foundations in networking, Linux, Windows and the SOC track.
 
-## 1. Forensic mindset
+The central discipline is **preserving evidence while reconstructing what happened**.
 
-The central question is not simply **"What happened?"** but:
+## DFIR mental model
 
-**What evidence supports that conclusion, what alternative explanations exist, and what remains unknown?**
+```text
+Question
+  ↓
+Identify relevant evidence
+  ↓
+Preserve / acquire safely
+  ↓
+Validate integrity and provenance
+  ↓
+Extract artifacts
+  ↓
+Normalize timestamps
+  ↓
+Build timeline
+  ↓
+Correlate evidence
+  ↓
+Form and test hypotheses
+  ↓
+Document findings and limitations
+```
 
-Preserve evidence, record provenance, normalize time, avoid unnecessary modification and distinguish facts from hypotheses.
+## Learning path
 
-## 2. Windows artifacts
+### 1. Operating-system artifacts
 
-Study the security value of:
-- Windows Event Logs
-- authentication records
-- process/service activity
-- scheduled tasks
-- PowerShell activity
-- browser/application artifacts
-- filesystem metadata
-- persistence-related locations
-- Active Directory-related evidence
+Start with Windows and Linux because endpoint artifacts are central to many investigations.
 
-Learn what each artifact can and cannot prove.
+- Users and accounts
+- Processes
+- Services
+- Filesystem metadata
+- Authentication records
+- Shell history
+- Scheduled execution
+- Network connections
+- Application artifacts
 
-## 3. Linux artifacts
+### 2. Event and log analysis
 
-Study:
-- authentication logs
-- system logs
-- shell history
-- scheduled jobs
-- service configuration
-- filesystem metadata
-- SSH-related records
-- process/network state
+Understand:
 
-## 4. Evidence handling
+- What generated an event
+- Which fields are important
+- Timestamp semantics
+- Host/user/process relationships
+- Missing or incomplete telemetry
+- Normal activity versus suspicious sequences
 
-For every evidence item, record:
-- source
-- acquisition time
-- original state where known
-- hash/integrity information where appropriate
-- analyst action
-- storage location
-- transformation or parsing performed
+### 3. Evidence handling
 
-Do not alter original evidence unnecessarily.
+Learn the concepts of:
 
-## 5. Timeline construction
+- Acquisition
+- Preservation
+- Hashing/integrity
+- Chain of custody
+- Original evidence versus working copies
+- Documentation of actions
 
-A useful timeline combines multiple evidence sources.
+### 4. Timeline analysis
 
-Recommended fields:
+A useful timeline answers:
 
-`timestamp | source | host | user | process | action | artifact | interpretation | confidence`
+- What happened first?
+- What changed?
+- Which account was involved?
+- Which process created or modified the artifact?
+- What network activity followed?
+- What evidence supports each conclusion?
 
-Before correlating events, identify timezone, clock-skew and timestamp-format assumptions.
+### 5. Incident investigation
 
-## 6. Investigation workflow
+Combine endpoint artifacts, logs and network evidence to investigate a bounded scenario.
 
-**Prepare → Acquire → Triage → Correlate → Build timeline → Form hypothesis → Test hypothesis → Determine scope → Report → Lessons learned**
+## Investigation standard
 
-A hypothesis should be revised when evidence contradicts it.
+Every conclusion should be classified as:
 
-## 7. Example training case
+- **Observed** — directly supported by evidence.
+- **Inferred** — strongly supported but not directly observed.
+- **Possible** — plausible but insufficiently supported.
+- **Unknown** — evidence is missing or contradictory.
 
-Create a safe isolated scenario containing:
-- a normal login
-- a failed-login sequence
-- a new process
-- a network connection
-- a modified file
+This prevents overclaiming.
 
-Then investigate the case without being told the answer. Build a timeline and identify which observations are facts and which are interpretations.
+## Future portfolio artifacts
 
-## 8. Memory and disk concepts
+- Windows artifact investigation
+- Authentication timeline
+- Suspicious PowerShell investigation
+- Endpoint/network correlation exercise
+- Disk or memory forensics lab
+- Full incident report
 
-Later study:
-- volatile vs non-volatile evidence
-- memory acquisition concepts
-- process/network artifacts in memory
-- disk images
-- file carving concepts
-- deleted-file recovery concepts
-- filesystem metadata
-
-Move into dedicated forensic tooling only after the underlying artifacts are understood.
-
-## 9. Reporting
-
-A DFIR report should communicate:
-- incident/question
-- scope
-- evidence sources
-- methodology
-- timeline
-- findings
-- confidence/limitations
-- impact
-- recommended response
-- unresolved questions
-
-## Definition of done
-
-A DFIR capability is mature when I can preserve relevant evidence, identify appropriate artifacts, build a defensible timeline, test competing explanations and communicate findings with explicit limitations.
+DFIR project pages should document actual investigations. The conceptual material belongs here so it does not get duplicated across project reports.
