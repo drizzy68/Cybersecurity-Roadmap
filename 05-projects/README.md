@@ -1,78 +1,93 @@
-# 05 — Projects & Security Evidence
+# 05 — Projects & Portfolio Evidence
 
-This is the portfolio layer. A project earns a place here when it demonstrates a capability that another person can inspect, understand and reproduce safely.
+This section is the **evidence layer** of the roadmap.
 
-## Project lifecycle
+A project should prove that I can apply knowledge in a realistic environment. It should not become a second textbook. When a project needs a technical explanation, it links to the canonical topic under `01-foundations`, `02-offensive-security`, `03-blue-team` or `07-dfir`.
 
-**Question → Scope → Design → Build/Test → Observe → Troubleshoot → Validate → Document → Review → Publish**
+## Evidence standard
 
-## Required project structure
+Every substantial project should answer:
 
 ### 1. Objective
-State the security or technical question being answered.
+What question, problem or security task was being investigated?
 
 ### 2. Scope
-Define systems, assumptions, authorization and exclusions.
+What systems, applications, networks or datasets were included? What was explicitly excluded?
 
 ### 3. Environment
-Document operating systems, network model, versions and relevant configuration without exposing secrets or sensitive infrastructure.
+What operating systems, network layout, tools and assumptions were involved?
 
-### 4. Methodology
-Explain the sequence of actions and why each stage was selected.
+### 4. Method
+What procedure was followed and why?
 
 ### 5. Evidence
-Include sanitized command output, screenshots, packet captures, logs, diagrams, code or measurements where appropriate.
+What commands, screenshots, logs, packet captures, code output or observations support the result?
 
-### 6. Findings/outcome
-State exactly what was observed. Separate observation from interpretation.
+### 6. Outcome
+What was discovered, built, changed or demonstrated?
 
 ### 7. Troubleshooting
-Record failures. A portfolio artifact becomes more valuable when it demonstrates diagnosis rather than only a perfect final run.
+What failed? What hypotheses were considered? How was the root cause isolated?
 
-### 8. Security relevance
-Explain how the result maps to confidentiality, integrity, availability, authentication, authorization, detection or operational risk.
+### 8. Security significance
+What security property does the result demonstrate?
 
-### 9. Remediation
-Where applicable, provide a concrete defensive recommendation and explain the underlying control.
+### 9. Remediation / improvement
+What should be changed, monitored or tested next?
 
 ### 10. Reflection
-Answer:
-- What did I initially misunderstand?
-- What changed my hypothesis?
-- What would I test next?
-- What would I automate?
-- What limitation remains?
+What did I learn and what would I do differently next time?
 
-## Current portfolio candidates
+## Current project portfolio
 
-### Authorized network enumeration
-Demonstrate scope validation, host discovery, service enumeration, result validation and reporting.
+### 🛡️ Authorized Network Enumeration
 
-### Web application security
-Document root cause, affected functionality, safe reproduction, impact and remediation for vulnerabilities studied in authorized labs.
+Demonstrates scoped discovery, service enumeration, validation of scanner results and evidence-based interpretation.
 
-### Penetration-testing assessment
-Show the complete workflow from scope through reporting while sanitizing all client/internship information.
+### 🌐 Web Security Analysis
 
-### VMware/virtualization
-Explain hypervisor architecture, VM networking, resource allocation, service reachability and troubleshooting.
+Demonstrates structured analysis of application behavior, root cause, impact, evidence and remediation.
 
-### SOC investigation
-Build a small incident case from authentication, process and network telemetry.
+### 🥷 Penetration-Testing Assessment
 
-### Python security automation
-Create small scripts that solve a real repetitive analysis problem, include error handling and explain limitations.
+Demonstrates an end-to-end authorized workflow from scope through reporting.
 
-## Portfolio quality levels
+### 🖥️ VMware / Virtualization Lab
 
-**Level 1 — Note:** records that something was learned.
+Demonstrates infrastructure understanding, VM provisioning, networking and troubleshooting.
 
-**Level 2 — Reproducible lab:** another learner can repeat the exercise.
+### 🧪 Future SOC Investigation
 
-**Level 3 — Technical artifact:** includes evidence, reasoning and troubleshooting.
+Will demonstrate log collection, alert triage, correlation, timeline construction and incident reporting.
 
-**Level 4 — Professional artifact:** polished methodology, limitations, security impact and remediation.
+### 🐍 Future Security Automation
 
-**Level 5 — Demonstrated capability:** project is independently executed, technically defensible and connected to a real security workflow.
+Will demonstrate Python automation for repetitive defensive or authorized assessment tasks.
 
-The goal is depth over volume. Three excellent artifacts are more useful than a large collection of shallow completion notes.
+## Public portfolio rules
+
+Public artifacts must be sanitized.
+
+Never publish:
+
+- passwords
+- API keys or tokens
+- private credentials
+- confidential client information
+- sensitive production topology
+- internal data without permission
+- exploit evidence that exposes an unauthorized real target
+
+The portfolio should demonstrate **capability without exposing secrets**.
+
+## Project maturity model
+
+| Level | Evidence quality |
+|---|---|
+| 1 | Completion note |
+| 2 | Procedure + basic output |
+| 3 | Reproducible technical write-up |
+| 4 | Strong evidence + troubleshooting + security analysis |
+| 5 | Reusable artifact, clear methodology, validation, limitations and polished presentation |
+
+The target for flagship portfolio pieces is **Level 4–5**.
