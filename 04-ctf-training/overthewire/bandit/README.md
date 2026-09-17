@@ -1,70 +1,83 @@
-# OverTheWire Bandit — Deep Learning Track
+# 🥷 OverTheWire Bandit
 
-Bandit is a deliberately constrained environment for building Linux and security problem-solving muscle. The valuable output is not the password for a level; it is the reasoning used to discover the next step.
+Bandit is my Linux/security problem-solving track. The objective is to become comfortable reading a problem, inspecting an unfamiliar environment, selecting the right command, interpreting failure and adapting the approach.
 
-## Progress
+## Current progress
 
-- [x] 0 → 10 — filesystem, shell parsing, search and text processing
-- [x] 10 → 15 — encoding, compression and network interaction
-- [x] 15 → 20 — TLS, service interaction, sessions and privilege boundaries
-- [x] Level 20 reached
-- [ ] 20 → 21 — current challenge
+**Level 20 reached**  
+**Next challenge: 20 → 21**
 
-## How to study each level
+## Skills developed
 
-For every challenge, answer these questions before looking for a walkthrough:
+### Linux and shell
 
-1. What exactly is the objective?
-2. What information is already known?
-3. What local files, permissions or services can I inspect?
-4. Which command can reduce the uncertainty?
-5. What does the output actually prove?
-6. What assumption could be wrong?
-7. How does the technique transfer to real security work?
+- filesystem navigation
+- hidden files
+- filenames containing special characters
+- permissions
+- `find`
+- pipelines
+- stdout/stderr
+- text processing
 
-## Evidence format
+### Data handling
 
-Each write-up should contain:
+- `grep`
+- `sort`
+- `uniq`
+- `strings`
+- `tr`
+- encoding/decoding
+- compression
+- binary-file identification
 
-**Objective → Observations → Hypothesis → Command/Method → Output interpretation → Troubleshooting → Security relevance → Lesson learned**
+### Networking
 
-Do not publish passwords, private keys, tokens or other secrets.
+- SSH
+- TCP service interaction
+- TLS with `openssl`
+- reading service behavior
 
-## Transferable skill map
+### Security reasoning
 
-| Bandit concept | Linux/security capability |
-|---|---|
-| Awkward filenames | Shell parsing and safe argument handling |
-| Hidden files | Filesystem enumeration |
-| `file` | Content identification independent of extension |
-| `find` | Metadata-based discovery |
-| `2>/dev/null` | stdout/stderr management |
-| `grep` | Targeted text search |
-| `sort | uniq` | Data normalization and deduplication |
-| `strings` | Extracting readable content from binary data |
-| Base64/encoding | Data representation and decoding |
-| Compression | File-format identification and extraction |
-| SSH keys | Authentication concepts |
-| `nc` | TCP client/server interaction |
-| `openssl` | TLS inspection and secure transport |
-| `diff` | Comparing files/configuration |
-| setuid | Privilege boundaries |
+- setuid/privilege boundaries
+- trust assumptions
+- local enumeration
+- protocol-specific interaction
+- troubleshooting
 
-## Progression beyond Bandit
+## Documentation model
 
-Bandit should eventually feed into three practical tracks:
+Each challenge is documented as:
 
-### Offensive
-Use Linux fluency during authorized reconnaissance, enumeration, service analysis and privilege-escalation labs.
+```text
+Objective
+   ↓
+Known information
+   ↓
+Hypothesis
+   ↓
+Command / technique
+   ↓
+Observed result
+   ↓
+Why it worked
+   ↓
+Security concept
+   ↓
+Transferable lesson
+```
 
-### Defensive
-Use the same command-line skills to inspect logs, processes, network connections and suspicious artifacts.
+The detailed write-up is [`levels-0-20.md`](levels-0-20.md).
 
-### Automation
-Reproduce repetitive discovery and analysis tasks with Python or shell scripts.
+## What is intentionally not here
 
-## Current milestone
+Challenge passwords and other reusable secrets are not part of the public repository.
 
-**Level 20 reached. Next: 20 → 21.**
+The point of the write-up is to preserve the **reasoning**, not the secret answer.
 
-The challenge should be approached as a reasoning exercise first and a command exercise second.
+## From CTF to real capability
+
+Bandit concepts should feed the canonical Linux material under [`01-foundations/linux`](../../../01-foundations/linux/README.md), while challenge-specific observations stay here.
+
+That separation prevents the CTF section from becoming a duplicate Linux command encyclopedia.
