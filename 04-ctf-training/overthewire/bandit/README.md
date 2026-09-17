@@ -1,45 +1,70 @@
-# OverTheWire Bandit
+# OverTheWire Bandit — Deep Learning Track
 
-## Purpose
-Bandit is part of this roadmap because it turns Linux fundamentals into repeated hands-on problem solving. The goal is not to collect passwords; it is to understand the underlying commands, shell behavior, file handling, permissions, and network interactions.
+Bandit is a deliberately constrained environment for building Linux and security problem-solving muscle. The valuable output is not the password for a level; it is the reasoning used to discover the next step.
 
 ## Progress
 
-- [x] Levels 0 → 10
-- [x] Levels 10 → 15
-- [x] Levels 15 → 20
+- [x] 0 → 10 — filesystem, shell parsing, search and text processing
+- [x] 10 → 15 — encoding, compression and network interaction
+- [x] 15 → 20 — TLS, service interaction, sessions and privilege boundaries
 - [x] Level 20 reached
-- [ ] Level 20 → 21
+- [ ] 20 → 21 — current challenge
 
-## Documentation standard
+## How to study each level
 
-Every level is documented using:
+For every challenge, answer these questions before looking for a walkthrough:
 
-**Objective → Method → Why it works → Security relevance → Lesson learned**
+1. What exactly is the objective?
+2. What information is already known?
+3. What local files, permissions or services can I inspect?
+4. Which command can reduce the uncertainty?
+5. What does the output actually prove?
+6. What assumption could be wrong?
+7. How does the technique transfer to real security work?
 
-Passwords, private credentials, tokens, and other secrets are intentionally excluded.
+## Evidence format
 
-## Skills developed
+Each write-up should contain:
 
-- Linux filesystem navigation
-- Shell quoting and argument parsing
-- Hidden files and awkward filenames
-- `find` and metadata-based discovery
-- `grep`, `sort`, `uniq`, `strings`, `tr`, and pipelines
-- Encoding and decoding
-- Compression and binary-file handling
-- SSH and SSH keys
-- TCP service interaction with `nc`
-- TLS connections with `openssl`
-- File permissions and setuid behavior
-- Troubleshooting command failures
+**Objective → Observations → Hypothesis → Command/Method → Output interpretation → Troubleshooting → Security relevance → Lesson learned**
 
-## Security connection
+Do not publish passwords, private keys, tokens or other secrets.
 
-These skills support later work in reconnaissance, enumeration, privilege escalation, log analysis, forensic triage, and security automation. Bandit is therefore treated as a Linux-security fundamentals lab rather than a standalone CTF achievement.
+## Transferable skill map
 
-## Next application
+| Bandit concept | Linux/security capability |
+|---|---|
+| Awkward filenames | Shell parsing and safe argument handling |
+| Hidden files | Filesystem enumeration |
+| `file` | Content identification independent of extension |
+| `find` | Metadata-based discovery |
+| `2>/dev/null` | stdout/stderr management |
+| `grep` | Targeted text search |
+| `sort | uniq` | Data normalization and deduplication |
+| `strings` | Extracting readable content from binary data |
+| Base64/encoding | Data representation and decoding |
+| Compression | File-format identification and extraction |
+| SSH keys | Authentication concepts |
+| `nc` | TCP client/server interaction |
+| `openssl` | TLS inspection and secure transport |
+| `diff` | Comparing files/configuration |
+| setuid | Privilege boundaries |
 
-The next objective is to transfer the same reasoning into an authorized penetration-testing workflow:
+## Progression beyond Bandit
 
-**Recon → Enumeration → Service identification → Initial access → Privilege escalation → Evidence → Reporting**
+Bandit should eventually feed into three practical tracks:
+
+### Offensive
+Use Linux fluency during authorized reconnaissance, enumeration, service analysis and privilege-escalation labs.
+
+### Defensive
+Use the same command-line skills to inspect logs, processes, network connections and suspicious artifacts.
+
+### Automation
+Reproduce repetitive discovery and analysis tasks with Python or shell scripts.
+
+## Current milestone
+
+**Level 20 reached. Next: 20 → 21.**
+
+The challenge should be approached as a reasoning exercise first and a command exercise second.
